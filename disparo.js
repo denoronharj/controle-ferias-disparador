@@ -1,8 +1,10 @@
+import admin from 'firebase-admin';
+import nodemailer from 'nodemailer';
 
-const admin = require('firebase-admin');
-const nodemailer = require('nodemailer');
-
-const serviceAccount = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString('utf8'));
+// Carrega variáveis de ambiente do GitHub Actions (base64 para JSON)
+const serviceAccount = JSON.parse(
+  Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString('utf8')
+);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
